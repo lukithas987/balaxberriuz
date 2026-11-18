@@ -1,0 +1,287 @@
+/* Fondo de pantalla principal con la imagen oficial */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('IMG/Fondo.jpg') center center/cover no-repeat;
+    opacity: 1;
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+}
+
+/* Fondo de partículas mágicas */
+#tsparticles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+body,
+.container,
+.titulo-principal {
+    position: relative;
+    z-index: 1;
+}
+
+body {
+    background: linear-gradient(135deg, #0a0f1d 0%, #111827 100%);
+    height: 100vh;
+    min-height: 100svh;
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: fadeInBody 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background 0.6s ease, color 0.6s ease;
+}
+
+@keyframes fadeInBody {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.container {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 30px 0 10px 0;
+    flex: 1;
+}
+.intro-flex {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ===== TÍTULO PRINCIPAL - CINZEL DORADO ===== */
+.titulo-principal {
+    text-align: center;
+    font-family: 'Cinzel', 'Segoe UI', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    margin: 1rem 0 0.5rem;
+    color: #ffd700;
+    letter-spacing: 3px;
+    position: relative;
+    display: inline-block;
+    animation: fadeInTitle 1.2s cubic-bezier(0.4, 0, 0.2, 1), tituloPulse 3.5s ease-in-out infinite 1.2s;
+    text-shadow: 0 4px 20px rgba(15, 23, 42, 0.8), 0 0 25px rgba(255, 215, 0, 0.4);
+}
+
+.logo-pair {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.5rem, 2vw, 1.5rem);
+    width: min(62%, 620px);
+    margin: 0 auto;
+    transform: translateX(clamp(10px, 4vw, 36px));
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 1.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.logo-pair img {
+    display: block;
+    width: calc((100% - clamp(0.5rem, 2vw, 1.5rem)) / 2);
+    height: clamp(58px, 13vh, 100px);
+    object-fit: contain;
+    filter: drop-shadow(0 0 14px rgba(160, 90, 255, 0.4));
+}
+.logo-pair img:first-child {
+    transform: translateX(-40px);
+}
+.center-logo {
+    display: block;
+    width: min(51.5625%, 550px);
+    height: clamp(99px, 22.34375vh, 171.6px);
+    margin: 30px auto 0.5rem;
+    object-fit: contain;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 0 14px rgba(160, 90, 255, 0.4));
+    animation: fadeInUp 1.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media (max-width: 600px) {
+    .logo-pair { width: 72%; }
+    .logo-pair img { height: clamp(48px, 9vh, 68px); }
+    .center-logo { height: clamp(82.5px, 15.46875vh, 116.6px); }
+}
+
+.titulo-principal::after {
+    content: 'Bienvenido a La Gran Tumba de Nazarick';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    color: transparent;
+    background: linear-gradient(120deg, transparent 0%, transparent 40%, rgba(255, 255, 255, 0.95) 50%, transparent 60%, transparent 100%);
+    background-size: 250% 100%;
+    background-position: 200% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    pointer-events: none;
+    animation: brilloDeslizante 4s ease-in-out infinite 2s;
+}
+
+@keyframes brilloDeslizante {
+    0%   { background-position: 200% 0; }
+    40%  { background-position: -100% 0; }
+    100% { background-position: -100% 0; }
+}
+
+@keyframes tituloPulse {
+    0%, 100% { text-shadow: 0 4px 20px rgba(15, 23, 42, 0.8), 0 0 20px rgba(255, 215, 0, 0.4); }
+    50% { text-shadow: 0 4px 25px rgba(15, 23, 42, 0.9), 0 0 35px rgba(255, 215, 0, 0.8), 0 0 15px rgba(233, 69, 96, 0.5); }
+}
+
+@keyframes fadeInTitle {
+    from { opacity: 0; transform: scale(0.95) translateY(-30px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+@media (max-width: 600px) {
+    .titulo-principal { font-size: 1.9rem; letter-spacing: 1.5px; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes fadeInSocialList {
+    from { opacity: 0; transform: translateX(-50%) translateY(40px) scale(0.98); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+}
+
+/* ===== LISTADO DE ENLACES ===== */
+.social-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(0.4rem, 1.5vw, 0.85rem);
+    width: min(94%, 900px);
+    margin: 0;
+    position: fixed;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    z-index: 1;
+    animation: fadeInSocialList 1.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: clamp(58px, 11vh, 82px);
+    box-sizing: border-box;
+    padding: 0.5rem;
+    border: 1.5px solid rgba(255, 215, 0, 0.45);
+    border-radius: 14px;
+    background: rgba(15, 23, 42, 0.75);
+    color: #ffd700;
+    font-size: 1.05rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+.social-link:hover {
+    transform: translateY(-3px) scale(1.02);
+    background: #ffd700;
+    color: #0f172a;
+    box-shadow: 0 10px 28px rgba(255, 215, 0, 0.35);
+}
+.platform-icon {
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 30px;
+    margin-right: 12px;
+    font-size: 1.55rem;
+    line-height: 1;
+}
+.platform-name {
+    min-width: 0;
+    text-align: center;
+}
+.kick-icon {
+    color: #53fc18;
+    font-family: Arial, sans-serif;
+    font-size: 1.45rem;
+    font-weight: 900;
+}
+.sound-button {
+    position: fixed;
+    right: 1rem;
+    top: 50%;
+    z-index: 3;
+    width: 48px;
+    height: 48px;
+    box-sizing: border-box;
+    padding: 0;
+    border: 1px solid rgba(255, 215, 0, 0.65);
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.9);
+    color: transparent;
+    font: inherit;
+    font-size: 0;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: width 0.25s ease, border-radius 0.25s ease, font-size 0.25s ease;
+}
+.sound-button::before {
+    content: 'A';
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: #ffd700;
+    font-size: 1rem;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+.sound-button:hover,
+.sound-button:focus-visible {
+    width: 170px;
+    padding: 0 0.85rem;
+    border-radius: 12px;
+    color: #ffd700;
+    font-size: 0.9rem;
+}
+.sound-button:hover::before,
+.sound-button:focus-visible::before {
+    opacity: 0;
+}
+@media (max-width: 600px) {
+    .social-list { width: 96%; }
+    .social-link { flex-direction: column; gap: 0.2rem; }
+    .platform-icon { margin-right: 0; }
+    .platform-name { font-size: 0.85rem; }
+}
